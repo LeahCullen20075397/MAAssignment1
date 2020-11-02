@@ -7,9 +7,13 @@ import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger{}
 
-var characters = characterModel()
-var relationships = relationshipModel()
-var choices = choiceModel()
+var character = characterModel()
+var relationship = relationshipModel()
+var choice = choiceModel()
+
+val  characters = ArrayList<characterModel>()
+val relationships = ArrayList<relationshipModel>()
+val choices = ArrayList<choiceModel>()
 
 fun main(args: Array<String>){
     logger.info{"Launching Dragon Age Console App"}
@@ -91,15 +95,20 @@ fun addCharacter(){
     println("Add Your Character")
     println()
     println("Enter character name: ")
-    characters.name = readLine()!!
+    character.name = readLine()!!
     println("Enter character gender: ")
-    characters.gender = readLine()!!
+    character.gender = readLine()!!
     println("Enter character race: ")
-    characters.race = readLine()!!
+    character.race = readLine()!!
     println("Enter character background: ")
-    characters.background = readLine()!!
-    println("Your character's name is " + characters.name + ". They are "+ characters.gender + " and from the " + characters.race +
-            " race. Their background is: " + characters.background + ".")
+    character.background = readLine()!!
+
+    if(character.name.isNotEmpty() && character.gender.isNotEmpty() && character.race.isNotEmpty()
+        && character.background.isNotEmpty()){
+        characters.add(character.copy())
+        logger.info("Character Added: [ $character]")
+    }else
+        logger.info("Character Not Added!!")
 }
 
 fun editRelationships(){
@@ -107,25 +116,29 @@ fun editRelationships(){
     println("Whats your character's relationship to these companions?")
     println()
     println("Alistair: ")
-    relationships.rAlaistair = readLine()!!
+    relationship.rAlaistair = readLine()!!
     println("Leliana: ")
-    relationships.rLeliana = readLine()!!
+    relationship.rLeliana = readLine()!!
     println("Morrigan: ")
-    relationships.rMorrigan = readLine()!!
+    relationship.rMorrigan = readLine()!!
     println("Oghren: ")
-    relationships.rOghren = readLine()!!
+    relationship.rOghren = readLine()!!
     println("Shale: ")
-    relationships.rShale = readLine()!!
+    relationship.rShale = readLine()!!
     println("Sten: ")
-    relationships.rSten = readLine()!!
+    relationship.rSten = readLine()!!
     println("Wynne: ")
-    relationships.rWynne = readLine()!!
+    relationship.rWynne = readLine()!!
     println("Zevran: ")
-    relationships.rZevran = readLine()!!
-    println("Here are your current relationships: ")
-    println("Alistair: " + relationships.rAlaistair +"\nLeliana: " + relationships.rLeliana +"\nMorrigan: " + relationships.rMorrigan +
-            "\nOghren: " + relationships.rOghren + "\nShale: " + relationships.rShale + "\nSten: " + relationships.rSten +
-            "\nWynne: " + relationships.rWynne + "\nZevran: " + relationships.rZevran + ".")
+    relationship.rZevran = readLine()!!
+
+    if(relationship.rAlaistair.isNotEmpty() && relationship.rLeliana.isNotEmpty() && relationship.rMorrigan.isNotEmpty()
+        && relationship.rOghren.isNotEmpty() && relationship.rShale.isNotEmpty() && relationship.rSten.isNotEmpty()
+        && relationship.rWynne.isNotEmpty() && relationship.rZevran.isNotEmpty()){
+        relationships.add(relationship.copy())
+        logger.info("Relationship added: [ $relationships]")
+    }else
+        logger.info("Relationship Not Added!!")
 }
 
 fun editChoices(){
@@ -134,30 +147,38 @@ fun editChoices(){
     println()
     println("THE BLIGHT")
     println("Did you die to end the Blight?(yes/no) ")
-    choices.hero = readLine()!!
+    choice.hero = readLine()!!
     println("THE NATURE OF THE BEAST")
     println("How did you resolve the problems between the werewolves and the elves? ")
-    choices.beast = readLine()!!
+    choice.beast = readLine()!!
     println("PARAGON OF HER KIND")
     println("What happened to the Anvil of the Void? ")
-    choices.paragon1 = readLine()!!
+    choice.paragon1 = readLine()!!
     println("Who rules in Orzammar? ")
-    choices.paragon2 = readLine()!!
+    choice.paragon2 = readLine()!!
     println("BROKEN CIRCLE")
     println("Who did you support at the Broken Circle? ")
-    choices.mages = readLine()!!
+    choice.mages = readLine()!!
     println("THE LANDSMEET")
     println("Who now rules Ferelden? ")
-    choices.ruler = readLine()!!
+    choice.ruler = readLine()!!
     println("THE URN OF SACRED ASHES")
     println("Did you poison the Urn? ")
-    choices.urn = readLine()!!
+    choice.urn = readLine()!!
     println("THE ARL OF REDCLIFFE")
     println("What happened to Connor? ")
-    choices.arl = readLine()!!
+    choice.arl = readLine()!!
     println("THE BATTLE OF DENERIM")
     println("Who killed the Archdemon? ")
-    choices.archdemon = readLine()!!
+    choice.archdemon = readLine()!!
+
+    if(choice.hero.isNotEmpty() && choice.beast.isNotEmpty() && choice.paragon1.isNotEmpty()
+        && choice.paragon2.isNotEmpty() && choice.mages.isNotEmpty() && choice.ruler.isNotEmpty()
+        && choice.urn.isNotEmpty() && choice.arl.isNotEmpty() && choice.archdemon.isNotEmpty()){
+        choices.add(choice.copy())
+        logger.info("Choice added: [ $choices]")
+    }else
+        logger.info("Choice Not Added!!")
 }
 
 fun updatePlaythrough(){
@@ -200,17 +221,17 @@ fun updateCharacter(){
     println("Update Character")
     println()
 
-    println("Enter a new character name for " + characters.name + ": ")
-    characters.name = readLine()!!
-    println("Enter a new character gender for " + characters.gender + ": ")
-    characters.gender = readLine()!!
-    println("Enter a new character race for " + characters.race +": ")
-    characters.race = readLine()!!
-    println("Enter a new character background for " + characters.background + ": ")
-    characters.background = readLine()!!
-    println("Your character's name is now " + characters.name + ". They are now " +
-            characters.gender + " and from the " + characters.race +
-            " race. Their background is now: " + characters.background + ".")
+    println("Enter a new character name for " + character.name + ": ")
+    character.name = readLine()!!
+    println("Enter a new character gender for " + character.gender + ": ")
+    character.gender = readLine()!!
+    println("Enter a new character race for " + character.race +": ")
+    character.race = readLine()!!
+    println("Enter a new character background for " + character.background + ": ")
+    character.background = readLine()!!
+    println("Your character's name is now " + character.name + ". They are now " +
+            character.gender + " and from the " + character.race +
+            " race. Their background is now: " + character.background + ".")
 }
 
 fun updateRelationships(){
@@ -218,25 +239,25 @@ fun updateRelationships(){
     println()
 
     println("Alistair: ")
-    relationships.rAlaistair = readLine()!!
+    relationship.rAlaistair = readLine()!!
     println("Leliana: ")
-    relationships.rLeliana = readLine()!!
+    relationship.rLeliana = readLine()!!
     println("Morrigan: ")
-    relationships.rMorrigan = readLine()!!
+    relationship.rMorrigan = readLine()!!
     println("Oghren: ")
-    relationships.rOghren = readLine()!!
+    relationship.rOghren = readLine()!!
     println("Shale: ")
-    relationships.rShale = readLine()!!
+    relationship.rShale = readLine()!!
     println("Sten: ")
-    relationships.rSten = readLine()!!
+    relationship.rSten = readLine()!!
     println("Wynne: ")
-    relationships.rWynne = readLine()!!
+    relationship.rWynne = readLine()!!
     println("Zevran: ")
-    relationships.rZevran = readLine()!!
+    relationship.rZevran = readLine()!!
     println("Here are your updated relationships: ")
-    println("Alistair: " + relationships.rAlaistair +"\nLeliana: " + relationships.rLeliana +"\nMorrigan: " + relationships.rMorrigan +
-            "\nOghren: " + relationships.rOghren + "\nShale: " + relationships.rShale + "\nSten: " + relationships.rSten +
-            "\nWynne: " + relationships.rWynne + "\nZevran: " + relationships.rZevran + ".")
+    println("Alistair: " + relationship.rAlaistair +"\nLeliana: " + relationship.rLeliana +"\nMorrigan: " + relationship.rMorrigan +
+            "\nOghren: " + relationship.rOghren + "\nShale: " + relationship.rShale + "\nSten: " + relationship.rSten +
+            "\nWynne: " + relationship.rWynne + "\nZevran: " + relationship.rZevran + ".")
 }
 
 fun updateChoices(){
@@ -245,33 +266,60 @@ fun updateChoices(){
 
     println("THE BLIGHT")
     println("Did you die to end the Blight?(yes/no) ")
-    choices.hero = readLine()!!
+    choice.hero = readLine()!!
     println("THE NATURE OF THE BEAST")
     println("How did you resolve the problems between the werewolves and the elves? ")
-    choices.beast = readLine()!!
+    choice.beast = readLine()!!
     println("PARAGON OF HER KIND")
     println("What happened to the Anvil of the Void? ")
-    choices.paragon1 = readLine()!!
+    choice.paragon1 = readLine()!!
     println("Who rules in Orzammar? ")
-    choices.paragon2 = readLine()!!
+    choice.paragon2 = readLine()!!
     println("BROKEN CIRCLE")
     println("Who did you support at the Broken Circle? ")
-    choices.mages = readLine()!!
+    choice.mages = readLine()!!
     println("THE LANDSMEET")
     println("Who now rules Ferelden? ")
-    choices.ruler = readLine()!!
+    choice.ruler = readLine()!!
     println("THE URN OF SACRED ASHES")
     println("Did you poison the Urn? ")
-    choices.urn = readLine()!!
+    choice.urn = readLine()!!
     println("THE ARL OF REDCLIFFE")
     println("What happened to Connor? ")
-    choices.arl = readLine()!!
+    choice.arl = readLine()!!
     println("THE BATTLE OF DENERIM")
     println("Who killed the Archdemon? ")
-    choices.archdemon = readLine()!!
+    choice.archdemon = readLine()!!
     println("Your choices have been updated!")
 }
 
 fun listPlaythroughs(){
-    println("Listing Playthroughs...")
+    println("List All Playthroughs")
+    println()
+    characters.forEach{logger.info("${it}")}
+    relationships.forEach { logger.info("${it}") }
+    choices.forEach { logger.info("${it}") }
+
+}
+
+fun dummyData() {
+    characters.add(characterModel("Leah", "Female", "Human", "Noble"))
+    relationships.add(
+        relationshipModel("Romance", "Friend", "Enemy", "Friend",
+        "Friend", "Enemy", "Friend", "Friend")
+    )
+    choices.add(
+        choiceModel("No", "Brokered Peace", "Destroyed", "Bhelen",
+    "Mages", "Anora", "No", "Survived, not possessed", "Warden")
+    )
+    characters.add(characterModel("Susie", "Female", "Elf", "Dalish"))
+    relationships.add(relationshipModel("Friend", "Friend", "Friend", "Friend",
+        "Friend", "Friend", "Friend", "Romance"))
+    choices.add(choiceModel("Yes", "Sided with the werewolves", "Saved", "Harrowmount",
+        "Templars", "Alaistair", "Yes", "Survived, possessed", "Alaistair"))
+    characters.add(characterModel("Ruairi", "Male", "Dwarf", "Commoner"))
+    relationships.add(relationshipModel("Enemy", "Romance", "Friend", "Friend",
+        "Enemy", "Enemy", "Friend", "Friend"))
+    choices.add(choiceModel("Yes", "Sided with the Elves", "Destroyed", "Bhelen",
+        "Mages", "Anora", "Yes", "Died", "Warden"))
 }
