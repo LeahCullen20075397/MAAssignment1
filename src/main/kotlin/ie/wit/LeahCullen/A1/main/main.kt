@@ -1,4 +1,4 @@
-package ie.wit.LeahCullen.A1
+package ie.wit.LeahCullen.A1.main
 
 import mu.KotlinLogging
 
