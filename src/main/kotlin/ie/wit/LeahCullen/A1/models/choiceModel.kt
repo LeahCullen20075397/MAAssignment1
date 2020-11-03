@@ -1,6 +1,7 @@
 package ie.wit.LeahCullen.A1.models
 
-data class choiceModel( var hero: String = "",
+data class choiceModel( var id: Long = 0,
+                        var hero: String = "",
                         var beast: String = "",
                         var paragon1: String = "",
                         var paragon2: String = "",
