@@ -8,7 +8,6 @@ import ie.wit.LeahCullen.A1.models.relationshipModel
 import ie.wit.LeahCullen.A1.views.*
 import mu.KotlinLogging
 
-private val logger = KotlinLogging.logger{}
 val characterView = CharacterView()
 val relationshipView = RelationshipView()
 val choiceView = ChoiceView()
@@ -24,6 +23,7 @@ class PlaythroughView {
         println("2.         Update a Playthough")
         println("3.         List All Playthroughs")
         println("4.         Search")
+        println("5.         Delete Playthrough")
         println("0.         Exit")
         println()
         println("Please enter a number: ")
@@ -76,10 +76,6 @@ class PlaythroughView {
     fun listPlaythroughs(){
         println("List All Playthroughs")
         println()
-
-        characterView.listCharacters()
-        relationshipView.listRelationships()
-        choiceView.listChoices()
     }
 
     fun getId(): Long{

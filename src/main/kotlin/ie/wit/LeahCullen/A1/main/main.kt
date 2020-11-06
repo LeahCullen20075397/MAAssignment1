@@ -1,9 +1,6 @@
 package ie.wit.LeahCullen.A1.main
 
-import ie.wit.LeahCullen.A1.controllers.CharacterController
-import ie.wit.LeahCullen.A1.controllers.ChoiceController
-import ie.wit.LeahCullen.A1.controllers.PlaythroughController
-import ie.wit.LeahCullen.A1.controllers.RelationshipController
+import ie.wit.LeahCullen.A1.controllers.*
 import ie.wit.LeahCullen.A1.models.*
 import ie.wit.LeahCullen.A1.views.*
 import mu.KotlinLogging
@@ -16,7 +13,7 @@ val relationshipView = RelationshipView()
 val choiceView = ChoiceView()
 
 
-val  characters = characterMemStore()
+val characters = characterMemStore()
 val relationships = relationshipMemStore()
 val choices = choiceMemStore()
 
@@ -38,6 +35,7 @@ fun main(args: Array<String>){
             2 -> updatePlaythrough()
             3 -> playthroughView.listPlaythroughs()
             4 -> searching()
+            5 -> deletePlaythrough()
             0 -> println("Exiting app...")
             else -> println("Invalid option. Please try again")
         }
@@ -97,7 +95,7 @@ fun updatePlaythrough(){
     logger.info{"Heading Back to the Main Menu"}
 }
 
-fun addCharacter(){
+fun addCharacter() {
 
     var aCharacter = characterModel()
 
