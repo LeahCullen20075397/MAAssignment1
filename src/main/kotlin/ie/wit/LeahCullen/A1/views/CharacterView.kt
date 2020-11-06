@@ -2,7 +2,9 @@ package ie.wit.LeahCullen.A1.views
 
 import ie.wit.LeahCullen.A1.models.characterMemStore
 import ie.wit.LeahCullen.A1.models.characterModel
-
+/*
+this view holds everything character related that you see in the console
+ */
 class CharacterView {
     fun listCharacters(characters: characterMemStore){
         println("List All Characters")

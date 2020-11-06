@@ -21,12 +21,18 @@ class characterMemStore: characterStore {
         return foundCharacter
     }
 
+    /*
+    a new character is assigned a new id. the new id is the last id in the character list +1
+     */
     override fun create(character: characterModel){
         character.id = getIdChar()
         characters.add(character)
         logAll()
     }
 
+    /*
+    replace old data with updated data
+     */
     override fun update(character: characterModel){
         var foundCharacter = findOne(character.id!!)
         if(foundCharacter != null){
@@ -37,6 +43,7 @@ class characterMemStore: characterStore {
         }
     }
 
+    //log each character to the console
     internal fun logAll(){
         characters.forEach { logger.info("${it}") }
     }

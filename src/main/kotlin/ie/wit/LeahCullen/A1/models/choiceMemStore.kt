@@ -21,12 +21,18 @@ class choiceMemStore: choiceStore {
         return foundChoice
     }
 
+    /*
+    a new choice is assigned a new id. the new id is the last id in the choice list +1
+     */
     override fun create(choice: choiceModel){
         choice.id = getIdChoice()
         choices.add(choice)
         logAll()
     }
 
+    /*
+    update old data with updated data
+     */
     override fun update(choice: choiceModel){
         var foundChoice = findOne(choice.id!!)
         if(foundChoice != null){
@@ -42,6 +48,9 @@ class choiceMemStore: choiceStore {
         }
     }
 
+    /*
+    log all choices to console
+     */
     internal fun logAll(){
         choices.forEach { logger.info("${it}") }
     }

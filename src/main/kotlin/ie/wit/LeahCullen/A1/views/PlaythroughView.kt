@@ -7,10 +7,12 @@ import ie.wit.LeahCullen.A1.models.choiceModel
 import ie.wit.LeahCullen.A1.models.relationshipModel
 import ie.wit.LeahCullen.A1.views.*
 import mu.KotlinLogging
-
+/*
+this view shows the main menus and sub menus
+ */
 val characterView = CharacterView()
-val relationshipView = RelationshipView()
-val choiceView = ChoiceView()
+/*val relationshipView = RelationshipView()
+val choiceView = ChoiceView()*/
 
 class PlaythroughView {
 

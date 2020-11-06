@@ -21,12 +21,18 @@ class playthroughMemStore: playthroughStore {
         return foundPlaythrough
     }
 
+    /*
+    a new playthrough is assigned a new id. the new id is the last id in the playthrough list +1
+     */
     override fun create(playthrough: playthroughModel){
         playthrough.id = getIdPlaythrough()
         playthroughs.add(playthrough)
         logAll()
     }
 
+    /*
+    replace old data with updated data
+     */
     override fun update(playthrough: playthroughModel){
         var foundPlaythrough = findOne(playthrough.id!!)
         if(foundPlaythrough != null){
@@ -36,6 +42,9 @@ class playthroughMemStore: playthroughStore {
         }
     }
 
+    /*
+    not used but throws error if commented out
+     */
     override fun delete(playthrough: playthroughModel) {
         playthroughs.remove(playthrough)
     }
@@ -43,7 +52,9 @@ class playthroughMemStore: playthroughStore {
     internal fun logAll(){
         playthroughs.forEach { logger.info("${it}") }
     }
-
+    /*
+    used instead of logall() cause it was easier for me to read while testing
+     */
     fun listAll(){
         playthroughs.forEach { println("${it}") }
     }

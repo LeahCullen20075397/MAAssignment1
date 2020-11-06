@@ -3,6 +3,9 @@ package ie.wit.LeahCullen.A1.views
 import ie.wit.LeahCullen.A1.models.relationshipMemStore
 import ie.wit.LeahCullen.A1.models.relationshipModel
 
+/*
+this view holds everything character related that you see in the console
+ */
 class RelationshipView {
     fun listRelationships(relationships: relationshipMemStore){
         println("List All Relationships")

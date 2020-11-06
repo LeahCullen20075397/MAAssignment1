@@ -1,5 +1,7 @@
 package ie.wit.LeahCullen.A1.models
-
+/*
+choiceModel manages user data and stores choice objects
+ */
 data class choiceModel( var id: Long = 0,
                         var hero: String = "",
                         var beast: String = "",

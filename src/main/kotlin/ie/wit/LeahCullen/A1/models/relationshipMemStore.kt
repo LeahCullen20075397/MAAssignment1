@@ -22,12 +22,18 @@ class relationshipMemStore: relationshipStore {
         return foundRelationship
     }
 
+    /*
+    a new relationship is assigned a new id. the new id is the last id in the relationship list +1
+     */
     override fun create(relationship: relationshipModel){
         relationship.id = getIdRelationship()
         relationships.add(relationship)
         logAll()
     }
 
+    /*
+    replace old data with new data
+     */
     override fun update(relationship: relationshipModel){
         var foundRelationship = findOne(relationship.id!!)
         if(foundRelationship != null){

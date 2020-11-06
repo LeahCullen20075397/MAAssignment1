@@ -2,7 +2,9 @@ package ie.wit.LeahCullen.A1.views
 
 import ie.wit.LeahCullen.A1.models.choiceModel
 import ie.wit.LeahCullen.A1.models.choiceMemStore
-
+/*
+this view holds everything choice related that you see in the console
+ */
 class ChoiceView {
     fun listChoices(choices: choiceMemStore){
         println("List All Choices")
