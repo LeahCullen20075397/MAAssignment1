@@ -50,7 +50,7 @@ class ChoiceController {
         return foundChoice
     }
 
-    fun dummyData(){
+    /*fun dummyData(){
         choices.create(
             choiceModel(1,"No", "Brokered Peace", "Destroyed", "Bhelen",
                 "Mages", "Anora", "No", "Survived, not possessed", "Warden"))
@@ -58,5 +58,5 @@ class ChoiceController {
             "Templars", "Alaistair", "Yes", "Survived, possessed", "Alaistair"))
         choices.create(choiceModel(3,"Yes", "Sided with the Elves", "Destroyed", "Bhelen",
             "Mages", "Anora", "Yes", "Died", "Warden"))
-    }
+    }*/
 }

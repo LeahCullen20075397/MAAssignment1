@@ -49,7 +49,7 @@ class RelationshipController {
         return foundRelationship
     }
 
-    fun dummyData(){
+    /*fun dummyData(){
         relationships.create(
             relationshipModel(1,"Romance", "Friend", "Enemy", "Friend",
                 "Friend", "Enemy", "Friend", "Friend")
@@ -58,5 +58,5 @@ class RelationshipController {
             "Friend", "Friend", "Friend", "Romance"))
         relationships.create(relationshipModel(3,"Enemy", "Romance", "Friend", "Friend",
             "Enemy", "Enemy", "Friend", "Friend"))
-    }
+    }*/
 }

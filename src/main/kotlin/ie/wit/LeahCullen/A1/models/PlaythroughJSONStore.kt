@@ -52,6 +52,11 @@ class PlaythroughJSONStore: playthroughStore {
         serialize()
     }
 
+    override fun delete(playthrough: playthroughModel){
+        playthroughs.remove(playthrough)
+        serialize()
+    }
+
     internal fun logAll(){
         playthroughs.forEach { logger.info("${it}") }
     }

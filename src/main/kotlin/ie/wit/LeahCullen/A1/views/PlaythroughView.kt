@@ -23,7 +23,7 @@ class PlaythroughView {
         println("2.         Update a Playthough")
         println("3.         List All Playthroughs")
         println("4.         Search")
-        println("5.         Delete Playthrough")
+        //println("5.         Delete Playthrough")
         println("0.         Exit")
         println()
         println("Please enter a number: ")
@@ -76,6 +76,8 @@ class PlaythroughView {
     fun listPlaythroughs(){
         println("List All Playthroughs")
         println()
+
+        playthroughs.listAll()
     }
 
     fun getId(): Long{

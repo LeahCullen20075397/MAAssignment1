@@ -50,9 +50,9 @@ class CharacterController {
         return foundCharacter
     }
 
-    fun dummyData(){
+    /*fun dummyData(){
         characters.create(characterModel(1,"Leah", "Female", "Human", "Noble"))
         characters.create(characterModel(2,"Susie", "Female", "Elf", "Dalish"))
         characters.create(characterModel(3,"Ruairi", "Male", "Dwarf", "Commoner"))
-    }
+    }*/
 }

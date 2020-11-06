@@ -9,7 +9,7 @@ internal fun getIdPlaythrough(): Long{
     return lastIdPlaythrough++
 }
 
-class MemStore: playthroughStore {
+class playthroughMemStore: playthroughStore {
     val playthroughs = ArrayList<playthroughModel>()
 
     override fun findAll(): List<playthroughModel>{
@@ -42,5 +42,9 @@ class MemStore: playthroughStore {
 
     internal fun logAll(){
         playthroughs.forEach { logger.info("${it}") }
+    }
+
+    fun listAll(){
+        playthroughs.forEach { println("${it}") }
     }
 }

@@ -16,11 +16,12 @@ val choiceView = ChoiceView()
 val characters = characterMemStore()
 val relationships = relationshipMemStore()
 val choices = choiceMemStore()
+val playthroughs = playthroughMemStore()
 
-val playthroughController = PlaythroughController()
+/*val playthroughController = PlaythroughController()
 val characterController = CharacterController()
 val relationshipController = RelationshipController()
-val choiceController = ChoiceController()
+val choiceController = ChoiceController()*/
 
 fun main(args: Array<String>){
     logger.info{"Launching Dragon Age Console App"}
@@ -35,7 +36,7 @@ fun main(args: Array<String>){
             2 -> updatePlaythrough()
             3 -> playthroughView.listPlaythroughs()
             4 -> searching()
-            5 -> deletePlaythrough()
+            //5 -> deletePlaythrough()
             0 -> println("Exiting app...")
             else -> println("Invalid option. Please try again")
         }
@@ -63,39 +64,68 @@ fun searching(){
 
 fun createPlaythrough(){
     var input: Int
+    var playthrough = playthroughModel()
 
     do{
         input = playthroughView.createMenu()
         when(input){
-            1 -> addCharacter()
-            2 -> editRelationships()
-            3 -> editChoices()
+            1 -> addCharacter(playthrough)
+            2 -> editRelationships(playthrough)
+            3 -> editChoices(playthrough)
             0 -> println("Back to main menu...")
             else -> println("Invalid option. Please try again")
         }
         println()
     }while(input != 0)
     logger.info{"Heading Back to the Main Menu"}
+    playthroughs.create(playthrough)
 }
 
 fun updatePlaythrough(){
     var input: Int
+    playthroughs.listAll()
+    println("Please enter the playthrough id: ")
+    val id = readLine()!!
+    var playthrough = playthroughs.findOne(id.toLong())!!
 
     do{
         input = playthroughView.updateMenu()
         when(input){
-            1 -> updateCharacter()
-            2 -> updateRelationships()
-            3 -> updateChoices()
+            1 -> updateCharacter(playthrough)
+            2 -> updateRelationships(playthrough)
+            3 -> updateChoices(playthrough)
             0 -> println("Back main menu...")
             else -> println("Invalid option. Please try again")
         }
         println()
     }while(input != 0)
     logger.info{"Heading Back to the Main Menu"}
+    playthroughs.update(playthrough)
 }
 
-fun addCharacter() {
+/*fun deletePlaythrough(){
+    var input: Int
+    playthroughs.listAll()
+    println("Please enter the playthrough id: ")
+    val id = readLine()!!
+    var playthrough = playthroughs.findOne(id.toLong())!!
+
+    do{
+        input = playthroughView.deleteMenu()
+        when(input){
+            1 -> deleteCharacter(playthrough)
+            2 -> deleteRelationships(playthrough)
+            3 -> deleteChoices(playthrough)
+            0 -> println("Back to Main Menu...")
+            else -> println("Invalid option. Please try again")
+        }
+        println()
+    }while (input != 0)
+    logger.info { "Heading back to the Main Menu" }
+    playthroughs.delete(playthrough)
+}*/
+
+fun addCharacter(playthroughModel: playthroughModel) {
 
     var aCharacter = characterModel()
 
@@ -103,27 +133,30 @@ fun addCharacter() {
         characters.create(aCharacter)
     else
         logger.info("Character Not Added...")
+    playthroughModel.characters.add(aCharacter)
 }
 
-fun editRelationships(){
+fun editRelationships(playthroughModel: playthroughModel){
     var aRelationship = relationshipModel()
 
     if(relationshipView.addRelationshipData(aRelationship))
         relationships.create(aRelationship)
     else
         logger.info("Relationship Not Added")
+    playthroughModel.relationships.add(aRelationship)
 }
 
-fun editChoices(){
+fun editChoices(playthroughModel: playthroughModel){
     var aChoice = choiceModel()
 
     if(choiceView.addChoiceData(aChoice))
         choices.create(aChoice)
     else
         logger.info("Choice Not Added...")
+    playthroughModel.choices.add(aChoice)
 }
 
-fun updateCharacter(){
+fun updateCharacter(playthroughModel: playthroughModel){
     characterView.listCharacters(characters)
     var searchId = characterView.getId()
     val aCharacter = search1(searchId)
@@ -141,7 +174,17 @@ fun updateCharacter(){
         println("Character Not Updated...")
 }
 
-fun updateRelationships(){
+/*fun deleteCharacter(playthroughModel: playthroughModel){
+    characterView.listCharacters(characters)
+    val searchId = characterView.getId()
+    val aCharacter = search1(searchId)
+
+    if(aCharacter != null){
+        if(characterView.)
+    }
+}*/
+
+fun updateRelationships(playthroughModel: playthroughModel){
     relationshipView.listRelationships(relationships)
     val searchId = relationshipView.getId()
     val aRelationship = search2(searchId)
@@ -159,7 +202,7 @@ fun updateRelationships(){
         println("Relationship Not Added...")
 }
 
-fun updateChoices(){
+fun updateChoices(playthroughModel: playthroughModel){
     choiceView.listChoices(choices)
     var searchId = choiceView.getId()
     val aChoice = search3(searchId)
